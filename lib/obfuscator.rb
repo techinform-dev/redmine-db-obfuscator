@@ -19,6 +19,7 @@ class Obfuscator
       %w(
         users
         emails
+        tokens
       ).each { |m| send("obfuscate_#{m}".to_sym) }
       puts 'Obfuscation completed.'
     end
