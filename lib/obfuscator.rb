@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'yaml'
-require 'mysql2'
+require 'pg'
 require 'sequel'
 require 'faker'
 
@@ -18,27 +18,6 @@ class Obfuscator
       puts 'Obfuscation started.'
       %w(
         users
-        projects
-        issues
-        attachments
-        auth_sources
-        boards
-        changesets
-        comments
-        customers
-        documents
-        journal_details
-        journals
-        messages
-        news
-        queries
-        repositories
-        time_entries
-        versions
-        wiki_content_versions
-        wiki_contents
-        wiki_pages
-        wiki_redirects
       ).each { |m| send("obfuscate_#{m}".to_sym) }
       puts 'Obfuscation completed.'
     end

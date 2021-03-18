@@ -1,6 +1,6 @@
-adapter: mysql2
+adapter: postgresql
 database: redmine_development
 host: 127.0.0.1
-username: root
-password:
+username: postgres
+password: postgres
 encoding: utf8
