@@ -18,6 +18,7 @@ class Obfuscator
       puts 'Obfuscation started.'
       %w(
         users
+        emails
       ).each { |m| send("obfuscate_#{m}".to_sym) }
       puts 'Obfuscation completed.'
     end
@@ -38,7 +39,16 @@ class Obfuscator
         end
       end
 
-      def obfuscate_issues
+    def obfuscate_emails
+      puts 'Obfuscating emails.'
+      db[:email_addresses].select(:id).each do |email|
+        db[:email_addresses].where(id: email[:id]).update(
+          address: Faker::Internet.email,
+        )
+      end
+    end
+
+    def obfuscate_issues
         puts 'Obfuscating issues.'
         db[:issues].select(:id).each do |issue|
           db[:issues].where(id: issue[:id]).update(
