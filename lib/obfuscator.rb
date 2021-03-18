@@ -48,6 +48,15 @@ class Obfuscator
       end
     end
 
+    def obfuscate_tokens
+      puts 'Obfuscating tokens.'
+      db[:tokens].select(:id).each do |token|
+        db[:tokens].where(id: token[:id]).update(
+          value: Faker::Alphanumeric.alphanumeric(number: 40)
+        )
+      end
+    end
+
     def obfuscate_issues
         puts 'Obfuscating issues.'
         db[:issues].select(:id).each do |issue|
