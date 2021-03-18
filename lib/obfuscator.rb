@@ -28,7 +28,6 @@ class Obfuscator
         puts 'Obfuscating users.'
         db[:users].select(:id).each do |user|
           db[:users].where(id: user[:id]).update(
-            login: Faker::Internet.user_name,
             hashed_password: '1b130fa7d1e947c9c330917cbf1a4b685555756f',
             salt: '0aacb7dd8deed04f67970531c86d13b0',
             firstname: Faker::Name.first_name,
