@@ -34,7 +34,6 @@ class Obfuscator
             salt: '0aacb7dd8deed04f67970531c86d13b0',
             firstname: Faker::Name.first_name,
             lastname: Faker::Name.last_name,
-            mail: Faker::Internet.email,
             auth_source_id: nil
           )
         end
@@ -53,7 +52,7 @@ class Obfuscator
       puts 'Obfuscating tokens.'
       db[:tokens].select(:id).each do |token|
         db[:tokens].where(id: token[:id]).update(
-          value: Faker::Alphanumeric.alphanumeric(number: 40)
+          value: Faker::Bitcoin.address
         )
       end
     end
