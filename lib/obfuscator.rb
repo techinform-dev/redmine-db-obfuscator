@@ -43,7 +43,7 @@ class Obfuscator
       puts 'Obfuscating emails.'
       db[:email_addresses].select(:id).each do |email|
         db[:email_addresses].where(id: email[:id]).update(
-          address: Faker::Internet.email,
+          address: Faker::Internet.email
         )
       end
     end
